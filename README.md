@@ -1,3 +1,5 @@
+[![MIT License][license-shield]][license-url]
+
 # CountdownRing
  
 A SwiftUI implementation of countdown timer ring UI.
