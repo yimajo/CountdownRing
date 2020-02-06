@@ -5,7 +5,7 @@
 A SwiftUI implementation of countdown timer ring UI.
 
 <p align="center">
-<img src="10sec.gif"/>
+<img src="ReadmeAssets/10sec.gif"/>
 </p>
 
 
