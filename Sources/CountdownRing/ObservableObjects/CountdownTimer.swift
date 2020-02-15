@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 @available(iOS 13.0, *)
 public class CountdownTimer: ObservableObject {
@@ -15,9 +16,11 @@ public class CountdownTimer: ObservableObject {
         case countdown
     }
 
-    @Published private(set) var formattedDuration: String = "00:00"
-    @Published private(set) public var limitTimeInteraval: TimeInterval
-    @Published private(set) public var nextFractionCompleted: Double = 0.0
+    public let objectWillChange = ObservableObjectPublisher()
+
+    private(set) var formattedDuration: String = "00:00"
+    private(set) public var limitTimeInteraval: TimeInterval
+    private(set) public var nextFractionCompleted: Double = 0.0
 
     var formattedLimitDuration: String {
         get {
@@ -37,6 +40,10 @@ public class CountdownTimer: ObservableObject {
     }()
 
     private var counter = 0 {
+        willSet {
+            objectWillChange.send()
+        }
+
         didSet {
             let reverse = limitTimeInteraval - TimeInterval(integerLiteral: Int64(counter))
             formattedDuration = timeFormatter.string(from: reverse)!
