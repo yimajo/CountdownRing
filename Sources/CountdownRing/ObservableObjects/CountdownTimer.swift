@@ -16,8 +16,6 @@ public class CountdownTimer: ObservableObject {
         case countdown
     }
 
-    public let objectWillChange = ObservableObjectPublisher()
-
     private(set) var formattedDuration: String = "00:00"
     private(set) public var limitTimeInteraval: TimeInterval
     private(set) public var nextFractionCompleted: Double = 0.0
